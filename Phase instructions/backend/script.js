@@ -40,3 +40,22 @@ function fetchArticles(event) {
         });  
 }
 
+
+
+// Function to display the results
+function displayResults(articles) {
+    const articlesContainer = document.getElementById('article-section');
+    articlesContainer.innerHTML = ''; // Clear out current contents
+
+    articles.forEach(article => {
+        const articleElement = document.createElement('div');
+        articleElement.className = 'mb-3';
+        articleElement.innerHTML = `
+            <h3><a href="${article.web_url}" target="_blank">${article.headline.main}</a></h3>
+            <p>${article.snippet}</p>
+            <p>${article.byline ? article.byline.original : 'No byline available'}</p>
+            <p>Published: ${new Date(article.pub_date).toLocaleDateString()}</p>
+        `;
+        articlesContainer.appendChild(articleElement);
+    });
+}
