@@ -59,3 +59,12 @@ function displayResults(articles) {
         articlesContainer.appendChild(articleElement);
     });
 }
+
+
+// Add event listeners
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('search-form').addEventListener('submit', fetchArticles);
+    document.getElementById('search-form').addEventListener('reset', () => {
+        document.getElementById('article-section').innerHTML = '';
+    });
+});
